@@ -17,10 +17,11 @@ export default function App() {
     setMovie('')
   }
 
-  const removeval=(item)=>{
-    
-    let a=data.filter(val=>val.director!=item.diector)
-    setData(a)
+  const removeval=(index)=>{
+   
+    setData(prevData => prevData.filter((val, i) => i!=index));
+    // let a=data.filter(val=>val.director!=item.diector)
+  
 
   console.log(data);
  
@@ -45,14 +46,14 @@ export default function App() {
               </View>
             )
           }}
-          renderItem={({item})=>{
+          renderItem={({item,index})=>{
             
             
             return(
               <View style={{marginTop:10}}>
                 <Text style={styles.input}>{item.director}</Text>
                 <Text style={styles.input}>{item.movie}</Text>
-                <Button title='remove' color={'red'} style={{marginTop:5}} onPress={(item)=>removeval(item)}/>
+                <Button title='remove' color={'red'} style={{marginTop:5}} onPress={(item)=>removeval(index)}/>
               </View>
             )
           }}
